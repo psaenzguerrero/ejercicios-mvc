@@ -5,22 +5,22 @@ require_once 'Biblioteca.php';
 $biblioteca = new Biblioteca();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $accion = $_POST['accion'] ?? '';
+    $action = $_POST['action'] ?? '';
 
     // Agregar libro
-    if ($accion === 'agregarLibro' && isset($_POST['titulo'], $_POST['autor'])) {
+    if ($action === 'agregarLibro' && isset($_POST['titulo'], $_POST['autor'])) {
         $biblioteca->agregarLibro($_POST['titulo'], $_POST['autor']);
     }
     // Borrar libro
-    elseif ($accion === 'borrar' && isset($_POST['id'])) {
+    elseif ($action === 'borrar' && isset($_POST['id'])) {
         $biblioteca->borrarLibro($_POST['id']);
     }
     // Actualizar estado de libro
-    elseif ($accion === 'actualizarEstado' && isset($_POST['id'], $_POST['estado'])) {
+    elseif ($action === 'actualizarEstado' && isset($_POST['id'], $_POST['estado'])) {
         $biblioteca->actualizarEstado($_POST['id'], $_POST['estado']);
     }
     // Agregar autor
-    elseif ($accion === 'agregarAutor' && isset($_POST['nombre'])) {
+    elseif ($action === 'agregarAutor' && isset($_POST['nombre'])) {
         $biblioteca->agregarAutor($_POST['nombre']);
     }
 

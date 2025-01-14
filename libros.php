@@ -29,14 +29,14 @@
                     <!-- Formulario para borrar un libro -->
                     <form method="post" style="display:inline;">
                         <input type="hidden" name="id" value="<?= $libro['id'] ?>">
-                        <button type="submit" name="accion" value="borrar">Borrar</button>
+                        <button type="submit" name="action" value="borrar">Borrar</button>
                     </form>
 
                     <!-- Formulario para actualizar el estado de un libro -->
                     <form method="post" style="display:inline;">
                         <input type="hidden" name="id" value="<?= $libro['id'] ?>">
                         <input type="hidden" name="estado" value="<?= $libro['estado'] == 1 ? 0 : 1 ?>">
-                        <button type="submit" name="accion" value="actualizarEstado">
+                        <button type="submit" name="action" value="actualizarEstado">
                             <?= $libro['estado'] == 1 ? 'Marcar como no disponible' : 'Marcar como disponible' ?>
                         </button>
                     </form>
@@ -57,14 +57,14 @@
                 <option value="<?= $autor['id'] ?>"><?= htmlspecialchars($autor['nombre']) ?></option>
             <?php endforeach; ?>
         </select>
-        <button type="submit" name="accion" value="agregarLibro">Agregar</button>
+        <button type="submit" name="action" value="agregarLibro">Agregar</button>
     </form>
 
     <h2>Agregar Autor</h2>
     <form method="post">
         <label for="nombre">Nombre del Autor:</label>
         <input type="text" name="nombre" id="nombre" required>
-        <button type="submit" name="accion" value="agregarAutor">Agregar</button>
+        <button type="submit" name="action" value="agregarAutor">Agregar</button>
     </form>
 </body>
 </html>
