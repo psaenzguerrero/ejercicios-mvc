@@ -8,11 +8,9 @@
 </head>
 <body>
     <h1>Gestión de Biblioteca</h1>
-
     <h2>Lista de Libros</h2>
     <table border="1">
         <tr>
-            <th>ID</th>
             <th>Título</th>
             <th>Autor</th>
             <th>Estado</th>
@@ -21,7 +19,7 @@
         <!-- Mostrar libros -->
         <?php foreach ($libros as $libro): ?>
             <tr>
-                <td><?= htmlspecialchars($libro['id']) ?></td>
+                <!-- El htmlspecialchars es para proteccion contra ataques xss es buena praxis pero no es obligatorio -->
                 <td><?= htmlspecialchars($libro['titulo']) ?></td>
                 <td><?= htmlspecialchars($libro['autor']) ?></td>
                 <td><?= $libro['estado'] == 1 ? 'Disponible' : 'No disponible' ?></td>
