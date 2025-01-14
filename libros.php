@@ -1,6 +1,4 @@
-
 <!-- VISTA -->
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,6 +18,7 @@
             <th>Estado</th>
             <th>Acciones</th>
         </tr>
+        <!-- Mostrar libros -->
         <?php foreach ($libros as $libro): ?>
             <tr>
                 <td><?= htmlspecialchars($libro['id']) ?></td>
@@ -27,10 +26,13 @@
                 <td><?= htmlspecialchars($libro['autor']) ?></td>
                 <td><?= $libro['estado'] == 1 ? 'Disponible' : 'No disponible' ?></td>
                 <td>
+                    <!-- Formulario para borrar un libro -->
                     <form method="post" style="display:inline;">
                         <input type="hidden" name="id" value="<?= $libro['id'] ?>">
                         <button type="submit" name="accion" value="borrar">Borrar</button>
                     </form>
+
+                    <!-- Formulario para actualizar el estado de un libro -->
                     <form method="post" style="display:inline;">
                         <input type="hidden" name="id" value="<?= $libro['id'] ?>">
                         <input type="hidden" name="estado" value="<?= $libro['estado'] == 1 ? 0 : 1 ?>">
@@ -47,8 +49,10 @@
     <form method="post">
         <label for="titulo">Título:</label>
         <input type="text" name="titulo" id="titulo" required>
+        
         <label for="autor">Autor:</label>
         <select name="autor" id="autor" required>
+            <!-- Opciones de autores -->
             <?php foreach ($autores as $autor): ?>
                 <option value="<?= $autor['id'] ?>"><?= htmlspecialchars($autor['nombre']) ?></option>
             <?php endforeach; ?>
