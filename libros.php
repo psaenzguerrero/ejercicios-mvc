@@ -5,6 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Biblioteca</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+            background-color: whitesmoke;
+            h1{
+                background-color: beige;
+                width: 100%;
+                text-align:center;
+                /* color: white; */
+                font-size:40px;
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>Gestión de Biblioteca</h1>
@@ -27,6 +43,7 @@
                     <!-- Formulario para borrar un libro -->
                     <form method="post" style="display:inline;">
                         <input type="hidden" name="id" value="<?= $libro['id'] ?>">
+
                         <button type="submit" name="action" value="borrar">Borrar</button>
                     </form>
 
@@ -34,6 +51,7 @@
                     <form method="post" style="display:inline;">
                         <input type="hidden" name="id" value="<?= $libro['id'] ?>">
                         <input type="hidden" name="estado" value="<?= $libro['estado'] == 1 ? 0 : 1 ?>">
+
                         <button type="submit" name="action" value="actualizarEstado">
                             <?= $libro['estado'] == 1 ? 'Marcar como no disponible' : 'Marcar como disponible' ?>
                         </button>
@@ -49,12 +67,14 @@
         <input type="text" name="titulo" id="titulo" required>
         
         <label for="autor">Autor:</label>
+
         <select name="autor" id="autor" required>
             <!-- Opciones de autores -->
             <?php foreach ($autores as $autor): ?>
                 <option value="<?= $autor['id'] ?>"><?= htmlspecialchars($autor['nombre']) ?></option>
             <?php endforeach; ?>
         </select>
+
         <button type="submit" name="action" value="agregarLibro">Agregar</button>
     </form>
 
@@ -64,5 +84,25 @@
         <input type="text" name="nombre" id="nombre" required>
         <button type="submit" name="action" value="agregarAutor">Agregar</button>
     </form>
-</body>
+    <h2>Lista de Autores</h2>
+    <table border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Accion</th>
+        </tr>
+        <?php foreach($autores as $autor):?>
+            <tr>
+                <td><?= htmlspecialchars($autor['nombre']) ?></td>
+                <td>
+                    <!-- Formulario para borrar un autor -->
+                    <form method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="<?= $autor['id'] ?>">
+
+                        <button type="submit" name="action" value="borrarAutor">Borrar</button>
+                    </form>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+    </body>
 </html>

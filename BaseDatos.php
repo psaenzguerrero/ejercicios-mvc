@@ -6,7 +6,6 @@ class BaseDatos {
     private $host = 'localhost';
     private $dbname = 'biblioteca';
     private $conn = null;
-
     public function conectar() {
         // Intentar conectarse a la base de datos usando MySQLi
         $this->conn = new mysqli($this->host, USU_CONN, PSW_CONN, $this->dbname);
